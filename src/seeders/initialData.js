@@ -24,11 +24,13 @@ const seedDatabase = async () => {
 
     // Create admin user if it doesn't exist
     if (!adminExists) {
+      // Cara yang benar: menggunakan password mentah, biarkan model hooks melakukan hashing
       await User.create({
         nama: "Admin",
         email: "admin@fuadfakhruz.id",
-        password: await bcrypt.hash("Herazaki0201", 10),
+        password: "Herazaki0201", // Password mentah, bukan hash
         role: "admin",
+        status_akun: "aktif", // Pastikan status akun aktif
         alamat: "Admin Address",
       });
       console.log("Admin user created successfully.");

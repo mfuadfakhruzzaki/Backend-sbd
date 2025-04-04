@@ -43,12 +43,12 @@ exports.getAllBarang = async (req, res) => {
     const userInclude = {
       model: User,
       as: "pemilik",
-      attributes: ["user_id", "nama", "email", "profile_picture", "kampus"],
+      attributes: ["user_id", "nama", "email", "profile_image"],
     };
 
     if (kampus) {
       userInclude.where = {
-        kampus: { [Op.like]: `%${kampus}%` },
+        alamat: { [Op.like]: `%${kampus}%` },
       };
     }
 
@@ -96,7 +96,7 @@ exports.getBarangById = async (req, res) => {
         {
           model: User,
           as: "pemilik",
-          attributes: ["user_id", "nama", "email", "profile_picture", "kampus"],
+          attributes: ["user_id", "nama", "email", "profile_image"],
         },
         {
           model: Kategori,
@@ -135,10 +135,11 @@ exports.createBarang = async (req, res) => {
     // Get user ID from auth middleware
     const user_id = req.user.user_id;
 
-    // Get file URLs from Appwrite upload middleware - store only URLs
+    // Get file URLs from Appwrite upload middleware
     let foto = [];
     if (req.appwriteFiles && req.appwriteFiles.length > 0) {
       foto = req.appwriteFiles.map((file) => file.url);
+      console.log("Foto URLs that will be saved:", foto);
     }
 
     // Create item
