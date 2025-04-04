@@ -1,0 +1,54 @@
+# Node modules and logs
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Version control
+.git
+.gitignore
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Documentation, and configuration files
+*.md
+!README.md
+LICENSE
+.editorconfig
+.eslintrc
+.prettierrc
+.dockerignore
+.vscode
+.idea
+
+# Tests
+__tests__
+test
+tests
+coverage
+
+# Docker
+Dockerfile*
+docker-compose*
+
+# Temporary files
+.tmp
+.temp
+tmp
+*.log
+logs
+
+# Build files
+dist
+build
+out
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backups
+backups/ 

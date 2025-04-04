@@ -3,18 +3,22 @@
 ## 1. Pendahuluan
 
 ### 1.1. Latar Belakang
+
 Proyek ini dibuat sebagai tugas akhir praktikum sistem basis data untuk memfasilitasi mahasiswa dalam jual beli barang bekas. Aplikasi ini tidak hanya membantu mahasiswa menghemat biaya, tapi juga mendukung gaya hidup ramah lingkungan dengan mendaur ulang barang yang masih layak pakai.
 
 Selain fitur dasar CRUD, aplikasi ini dilengkapi dengan fitur tambahan seperti chat real-time, rating & review, wishlist, dan laporan konten guna meningkatkan keamanan dan kenyamanan transaksi.
 
 ### 1.2. Tujuan
+
 - Menyediakan platform bagi mahasiswa untuk jual beli barang bekas dengan mudah dan aman.
 - Mengintegrasikan basis data yang mendukung fungsi Create, Read, Update, Delete (termasuk soft delete dan hard delete).
 - Memenuhi persyaratan tugas akhir praktikum basis data dengan minimal 3 tabel, constraint, ERD, halaman join query, dan fitur autentikasi.
 - Meningkatkan interaksi antar pengguna dengan fitur chat, notifikasi, rating & review, serta wishlist.
 
 ### 1.3. Ruang Lingkup
+
 Aplikasi ini meliputi:
+
 - Manajemen pengguna: Registrasi, login, dan manajemen profil.
 - Manajemen barang: Upload, edit, hapus (soft/hard delete) barang bekas.
 - Transaksi: Proses pembelian, riwayat transaksi, dan sistem penilaian.
@@ -24,12 +28,15 @@ Aplikasi ini meliputi:
 ## 2. Deskripsi Umum
 
 ### 2.1. Gambaran Sistem
+
 Sistem akan memberikan pengalaman berbelanja online yang aman, mudah, dan interaktif dengan:
+
 - User Interface yang simpel dan responsif, lengkap dengan navbar untuk navigasi.
 - Basis data terintegrasi yang menyimpan data pengguna, barang, transaksi, chat, rating, dan wishlist.
 - Keamanan transaksi dengan autentikasi login dan fitur laporan konten untuk meminimalisir kecurangan.
 
 ### 2.2. Aktor Sistem
+
 - **Mahasiswa (User):**
   - Sebagai penjual barang bekas.
   - Sebagai pembeli barang bekas.
@@ -38,6 +45,7 @@ Sistem akan memberikan pengalaman berbelanja online yang aman, mudah, dan intera
   - Menangani laporan konten dan mengelola data aplikasi.
 
 ### 2.3. Lingkungan Operasi
+
 - **Frontend:** React
 - **Backend:** Node.js dengan Express
 - **Database:** MySQL
@@ -47,6 +55,7 @@ Sistem akan memberikan pengalaman berbelanja online yang aman, mudah, dan intera
 ## 3. Persyaratan Fungsional
 
 ### 3.1. Manajemen Pengguna (USER)
+
 - **Registrasi dan Login:**
   - Mahasiswa dapat mendaftar menggunakan email kampus.
   - Validasi email dan password wajib.
@@ -56,6 +65,7 @@ Sistem akan memberikan pengalaman berbelanja online yang aman, mudah, dan intera
   - Opsi reset password.
 
 ### 3.2. Manajemen Barang (BARANG)
+
 - **Create:**
   - Pengguna dapat mengupload barang dengan informasi: judul, deskripsi, foto (multiple), harga, kategori, kondisi, lokasi.
   - Sistem secara otomatis menyimpan waktu pembuatan (created_at) dan user_id pemilik.
@@ -72,6 +82,7 @@ Sistem akan memberikan pengalaman berbelanja online yang aman, mudah, dan intera
   - Hard Delete: Menghapus barang secara permanen (hanya untuk admin).
 
 ### 3.3. Transaksi (TRANSAKSI)
+
 - **Pencatatan Transaksi:**
   - Menyimpan data pembelian antara pembeli dan penjual (barang_id, seller_id, buyer_id, tanggal_transaksi, metode_pembayaran, total_harga, status).
   - Sistem mencatat perubahan status transaksi dengan timestamp.
@@ -85,20 +96,24 @@ Sistem akan memberikan pengalaman berbelanja online yang aman, mudah, dan intera
   - Notifikasi menampilkan status "dibaca" atau "belum dibaca".
 
 ### 3.4. Interaksi (CHAT)
+
 - **Chat Real-Time:**
   - Fitur chat antara penjual dan pembeli.
   - Menyediakan notifikasi pesan masuk.
 
 ### 3.5. Rating dan Review (RATING)
+
 - **Memberi Rating:**
   - Pengguna dapat memberikan rating (misalnya 1-5) dan review setelah transaksi selesai.
   - Data review ditampilkan pada halaman detail barang atau profil penjual.
 
 ### 3.6. Wishlist (WISHLIST)
+
 - **Menyimpan Barang Favorit:**
   - Pengguna dapat menyimpan barang ke dalam wishlist untuk dilihat kembali di lain waktu.
 
 ### 3.7. Laporan Konten
+
 - **Pelaporan Iklan/Pengguna:**
   - Pengguna dapat melaporkan iklan atau aktivitas mencurigakan.
   - Pengguna harus memilih kategori alasan pelaporan (penipuan, konten tidak pantas, barang ilegal, dll).
@@ -106,40 +121,48 @@ Sistem akan memberikan pengalaman berbelanja online yang aman, mudah, dan intera
   - Laporan dikirim ke admin untuk ditindaklanjuti dengan status yang dapat diubah menjadi "diproses", "selesai", atau "ditolak".
 
 ### 3.8. Navbar dan Navigasi
+
 - **Navigasi Konsisten:**
   - Navbar wajib tersedia di setiap halaman dengan menu: Home, Cari Barang, Upload Barang, Chat, Wishlist, Profil, dan Laporan (untuk admin).
 
 ## 4. Persyaratan Non-Fungsional
 
 ### 4.1. Kinerja
+
 - Halaman harus dimuat dalam waktu kurang dari 3 detik.
 - Optimasi query database agar join data tidak memberatkan sistem.
 
 ### 4.2. Keamanan
+
 - Enkripsi password saat penyimpanan.
 - Penggunaan token untuk sesi autentikasi.
 - Proteksi terhadap SQL Injection dan serangan web umum lainnya.
 
 ### 4.3. Skalabilitas
+
 - Sistem harus mampu menangani peningkatan jumlah data dan pengguna.
 - Arsitektur modular agar mudah menambah fitur di masa depan.
 
 ### 4.4. Ketersediaan
+
 - Aplikasi harus tersedia 24/7 dengan downtime minimal.
 - Backup rutin basis data untuk menghindari kehilangan data.
 
 ### 4.5. Dokumentasi dan Deployment
+
 - Dokumentasi lengkap (README, ERD, setup guide) wajib diunggah ke GitHub.
 - Kode harus dikomentari dengan jelas untuk memudahkan pengembangan dan pemeliharaan.
 
 ## 5. Batasan dan Asumsi
 
 ### 5.1. Batasan
+
 - Aplikasi hanya diakses oleh mahasiswa yang terverifikasi melalui email kampus.
 - Fitur chat dan notifikasi hanya dapat diakses oleh pengguna yang sudah login.
 - Laporan konten hanya dapat diajukan oleh pengguna yang terverifikasi.
 
 ### 5.2. Asumsi
+
 - Setiap transaksi dilakukan antara dua pihak (penjual dan pembeli).
 - Data barang bersifat dinamis dan dapat diupdate atau dihapus sesuai kebutuhan pengguna.
 - Admin bertanggung jawab memoderasi konten dan menangani laporan pengguna.
@@ -151,6 +174,7 @@ Diagram ERD yang lebih komprehensif mencakup entitas dan relasi berikut:
 ### 6.1. Entitas dan Atribut
 
 #### USER
+
 - **PK**: user_id (INT, AUTO_INCREMENT)
 - nama (VARCHAR(100), NOT NULL)
 - email (VARCHAR(100), NOT NULL, UNIQUE)
@@ -166,6 +190,7 @@ Diagram ERD yang lebih komprehensif mencakup entitas dan relasi berikut:
 - deleted_at (TIMESTAMP, NULL)
 
 #### KATEGORI
+
 - **PK**: kategori_id (INT, AUTO_INCREMENT)
 - nama_kategori (VARCHAR(50), NOT NULL)
 - deskripsi (TEXT)
@@ -174,12 +199,13 @@ Diagram ERD yang lebih komprehensif mencakup entitas dan relasi berikut:
 - updated_at (TIMESTAMP, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)
 
 #### BARANG
+
 - **PK**: barang_id (INT, AUTO_INCREMENT)
 - **FK**: user_id (INT, REFERENCES USER(user_id))
 - **FK**: kategori_id (INT, REFERENCES KATEGORI(kategori_id))
 - judul (VARCHAR(100), NOT NULL)
 - deskripsi (TEXT, NOT NULL)
-- foto (JSON) -- Menyimpan array path foto
+- foto (JSON) -- Menyimpan array URL gambar dari Appwrite Storage
 - harga (DECIMAL(10,2), NOT NULL)
 - lokasi (VARCHAR(100))
 - kondisi (ENUM('baru', 'seperti baru', 'bekas', 'rusak ringan'), NOT NULL)
@@ -191,6 +217,7 @@ Diagram ERD yang lebih komprehensif mencakup entitas dan relasi berikut:
 - updated_at (TIMESTAMP, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)
 
 #### TRANSAKSI
+
 - **PK**: transaksi_id (INT, AUTO_INCREMENT)
 - **FK**: barang_id (INT, REFERENCES BARANG(barang_id))
 - **FK**: seller_id (INT, REFERENCES USER(user_id))
@@ -204,6 +231,7 @@ Diagram ERD yang lebih komprehensif mencakup entitas dan relasi berikut:
 - updated_at (TIMESTAMP, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)
 
 #### CHAT
+
 - **PK**: chat_id (INT, AUTO_INCREMENT)
 - **FK**: sender_id (INT, REFERENCES USER(user_id))
 - **FK**: receiver_id (INT, REFERENCES USER(user_id))
@@ -213,6 +241,7 @@ Diagram ERD yang lebih komprehensif mencakup entitas dan relasi berikut:
 - tanggal (TIMESTAMP, DEFAULT CURRENT_TIMESTAMP)
 
 #### RATING
+
 - **PK**: rating_id (INT, AUTO_INCREMENT)
 - **FK**: transaksi_id (INT, REFERENCES TRANSAKSI(transaksi_id), UNIQUE)
 - **FK**: reviewer_id (INT, REFERENCES USER(user_id))
@@ -223,6 +252,7 @@ Diagram ERD yang lebih komprehensif mencakup entitas dan relasi berikut:
 - updated_at (TIMESTAMP, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)
 
 #### WISHLIST
+
 - **PK**: wishlist_id (INT, AUTO_INCREMENT)
 - **FK**: user_id (INT, REFERENCES USER(user_id))
 - **FK**: barang_id (INT, REFERENCES BARANG(barang_id))
@@ -230,6 +260,7 @@ Diagram ERD yang lebih komprehensif mencakup entitas dan relasi berikut:
 - **UNIQUE INDEX**: (user_id, barang_id) -- Mencegah duplikasi wishlist
 
 #### NOTIFIKASI
+
 - **PK**: notifikasi_id (INT, AUTO_INCREMENT)
 - **FK**: user_id (INT, REFERENCES USER(user_id))
 - judul (VARCHAR(100), NOT NULL)
@@ -239,6 +270,7 @@ Diagram ERD yang lebih komprehensif mencakup entitas dan relasi berikut:
 - created_at (TIMESTAMP, DEFAULT CURRENT_TIMESTAMP)
 
 #### LAPORAN
+
 - **PK**: laporan_id (INT, AUTO_INCREMENT)
 - **FK**: reporter_id (INT, REFERENCES USER(user_id))
 - item_type (ENUM('barang', 'pengguna'), NOT NULL)
@@ -274,15 +306,18 @@ Diagram ERD yang lebih komprehensif mencakup entitas dan relasi berikut:
 ## 7. Teknologi yang Digunakan
 
 ### 7.1. Frontend
+
 - **Framework:** React
 - HTML, CSS, JavaScript
 - Responsiveness dengan Bootstrap atau framework CSS lainnya
 
 ### 7.2. Backend
+
 - **Bahasa Pemrograman:** Node.js dengan Express
 - API untuk meng-handle CRUD, autentikasi, dan fitur chat
 
 ### 7.3. Database
+
 - **Sistem Basis Data:** MySQL
 - **Integritas Data:**
   - Penggunaan constraint seperti foreign key, unique, dan check untuk menjaga integritas data.
@@ -295,13 +330,28 @@ Diagram ERD yang lebih komprehensif mencakup entitas dan relasi berikut:
   - Sistem backup otomatis menggunakan fitur MySQL dan Docker volume.
   - Strategi recovery dengan point-in-time recovery capability.
 
-### 7.4. Deployment & Version Control
+### 7.4. Penyimpanan Media
+
+- **Service:** Appwrite Storage
+- **Implementasi:**
+  - Menggunakan Appwrite Storage untuk penyimpanan gambar produk
+  - Penggunaan bucket dengan izin akses yang terbatas
+  - Manajemen lifecycle file melalui API
+  - URL publik untuk akses gambar
+- **Manajemen File:**
+  - Upload multiple file sekaligus
+  - Penghapusan file melalui API
+  - Pengamanan akses dengan API key
+
+### 7.5. Deployment & Version Control
+
 - **Repository:** GitHub
 - **Deployment:** Docker Compose (termasuk container untuk MySQL)
 
 ## 8. Rencana Pengujian
 
 ### 8.1. Pengujian Fungsional
+
 - **User Testing:**
   - Registrasi, login, dan update profil
   - CRUD data barang, transaksi, chat, rating, dan wishlist
@@ -309,12 +359,14 @@ Diagram ERD yang lebih komprehensif mencakup entitas dan relasi berikut:
   - Pastikan relasi antar tabel bekerja dengan baik (misalnya join query antara USER, BARANG, dan TRANSAKSI)
 
 ### 8.2. Pengujian Non-Fungsional
+
 - **Performance Testing:**
   - Uji waktu respon halaman dan query database
 - **Security Testing:**
   - Uji sistem autentikasi dan proteksi terhadap serangan SQL Injection
 
 ## 9. Rencana Implementasi
+
 - **Analisis & Desain:**
   - Membuat ERD dan desain UI/UX
   - Persiapan dokumentasi dan setup GitHub
@@ -328,6 +380,7 @@ Diagram ERD yang lebih komprehensif mencakup entitas dan relasi berikut:
   - Evaluasi feedback pengguna dan perbaikan bug
 
 ## 10. Penutup
+
 Dokumen SRS ini merupakan acuan awal untuk pengembangan web app e-commerce barang bekas mahasiswa. Dokumen dapat diperbarui sesuai dengan masukan dari asisten pembimbing dan tim pengembang.
 
 Semoga dokumen ini membantu dalam penyusunan dan implementasi sistem, dan sukses untuk tugas akhirnya!
