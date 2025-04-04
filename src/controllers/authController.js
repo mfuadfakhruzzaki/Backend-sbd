@@ -62,7 +62,7 @@ exports.login = async (req, res) => {
     }
 
     // Check password
-    const isPasswordValid = await user.checkPassword(password);
+    const isPasswordValid = await user.comparePassword(password);
     if (!isPasswordValid) {
       return res.error("Invalid email or password", null, 401);
     }
@@ -99,7 +99,7 @@ exports.changePassword = async (req, res) => {
     }
 
     // Check current password
-    const isPasswordValid = await user.checkPassword(current_password);
+    const isPasswordValid = await user.comparePassword(current_password);
     if (!isPasswordValid) {
       return res.error("Current password is incorrect", null, 400);
     }
